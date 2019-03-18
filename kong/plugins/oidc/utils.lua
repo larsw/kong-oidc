@@ -12,7 +12,7 @@ local function parseFilters(csvFilters)
   return filters
 end
 
-function M.get_redirect_uri_path(ngx)
+function M.get_redirect_uri(ngx)
   local function drop_query()
     local uri = ngx.var.request_uri
     local x = uri:find("?")
@@ -49,7 +49,7 @@ function M.get_options(config, ngx)
     introspection_endpoint_auth_method = config.introspection_endpoint_auth_method,
     bearer_only = config.bearer_only,
     realm = config.realm,
-    redirect_uri_path = config.redirect_uri_path or M.get_redirect_uri_path(ngx),
+    redirect_uri = config.redirect_uri or M.get_redirect_uri(ngx),
     scope = config.scope,
     response_type = config.response_type,
     ssl_verify = config.ssl_verify,
