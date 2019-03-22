@@ -4,7 +4,7 @@ local M = {}
 
 local function parseFilters(csvFilters)
   local filters = {}
-  if (not (csvFilters == nil)) and (not (csvFilters ",")) then
+  if (not (csvFilters == nil)) and (not (csvFilters == ",")) then
     for pattern in string.gmatch(csvFilters, "[^,]+") do
       table.insert(filters, pattern)
     end
@@ -86,6 +86,7 @@ function M.exit(httpStatusCode, message, ngxCode)
 end
 
 function M.injectAccessToken(accessToken, headerName, bearerToken)
+  ngx.log(ngx.DEBUG, "Injecting " .. headerName)
   token = accessToken
   if (bearerToken) then
     token = formatAsBearerToken(token)
@@ -94,11 +95,13 @@ function M.injectAccessToken(accessToken, headerName, bearerToken)
 end
 
 function M.injectIDToken(idToken, headerName)
+  ngx.log(ngx.DEBUG, "Injecting " .. headerName)
   local tokenStr = cjson.encode(idToken)
   ngx.req.set_header(headerName, ngx.encode_base64(tokenStr))
 end
 
-function M.injectUser(user)
+function M.injectUser(user, headerName)
+  ngx.log(ngx.DEBUG, "Injecting " .. headerName)
   local tmp_user = user
   tmp_user.id = user.sub
   tmp_user.username = user.preferred_username

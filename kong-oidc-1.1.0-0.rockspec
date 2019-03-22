@@ -1,7 +1,7 @@
 package = "kong-oidc"
 version = "1.1.0-0"
 source = {
-    url = "git://github.com/nokia/kong-oidc",
+    url = "git://github.com/larsw/kong-oidc",
     tag = "v1.1.0",
     dir = "kong-oidc"
 }
@@ -22,7 +22,7 @@ description = {
     license = "Apache 2.0"
 }
 dependencies = {
-    "lua-resty-openidc ~> 1.7.1-1"
+    "lua-resty-openidc ~> 1.7.1-1""
 }
 build = {
     type = "builtin",
