@@ -19,13 +19,14 @@ return {
     logout_path = { type = "string", required = false, default = '/logout' },
     redirect_after_logout_uri = { type = "string", required = false, default = '/' },
     filters = { type = "string" },
-    ignore_auth_filters = { type = "string" },
+    ignore_auth_filters = { type = "string", default = "" },
     userinfo_header_name = { type = "string", required = false, default = "X-USERINFO" },
     id_token_header_name = { type = "string", required = false, default = "X-ID-Token" },
     access_token_header_name = { type = "string", required = false, default = "X-Access-Token" },
     access_token_header_as_bearer = { type = "string", required = false, default = "no" }, 
     disable_userinfo_header = { type = "string", required = false, default = "no" },
     disable_id_token_header = { type = "string", required = false, default = "no" },
-    disable_access_token_header = { type = "string", required = false, default = "no" }
+    disable_access_token_header = { type = "string", required = false, default = "no" },
+    revoke_tokens_on_logout = { type = "string", required = false, default = "no" }
   }
 }

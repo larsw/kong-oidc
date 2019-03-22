@@ -37,7 +37,14 @@ function TestUtils:testOptions()
     introspection_endpoint_auth_method = "client_secret_basic",
     filters = "pattern1,pattern2,pattern3",
     logout_path = "/logout",
-    redirect_after_logout_uri = "/login"
+    redirect_after_logout_uri = "/login",
+    userinfo_header_name = "X-UI",
+    id_token_header_name = "X-ID",
+    access_token_header_name = "Authorization",
+    access_token_as_bearer = "yes",
+    disable_userinfo_header = "yes",
+    disable_id_token_header = "yes",
+    disable_access_token_header = "yes"
   }, {var = {request_uri = "/path"},
     req = {get_uri_args = function() return nil end}})
 
@@ -52,6 +59,13 @@ function TestUtils:testOptions()
   lu.assertEquals(opts.redirect_uri_path, "/path/")
   lu.assertEquals(opts.logout_path, "/logout")
   lu.assertEquals(opts.redirect_after_logout_uri, "/login")
+  lu.assertEquals(opts.userinfo_header_name, "X-UI")
+  lu.assertEquals(opts.id_token_header_name, "X-ID")
+  lu.assertEquals(opts.access_token_header_name, "Authorization")
+  lu.assertEquals(opts.access_token_as_bearer, true)
+  lu.assertEquals(opts.disable_userinfo_header, true)
+  lu.assertEquals(opts.disable_id_token_header, true)
+  lu.assertEquals(opts.disable_access_token_header, true)
 
   local expectedFilters = {
     "pattern1",

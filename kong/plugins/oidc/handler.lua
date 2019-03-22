@@ -30,7 +30,7 @@ function handle(oidcConfig)
   if oidcConfig.introspection_endpoint then
     response = introspect(oidcConfig)
     if response then
-      utils.injectUser(response)
+      utils.injectUser(response, oidcConfig.userinfo_header_name)
     end
   end
 
@@ -81,6 +81,5 @@ function introspect(oidcConfig)
   end
   return nil
 end
-
 
 return OidcHandler
