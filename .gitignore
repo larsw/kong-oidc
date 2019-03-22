@@ -5,5 +5,7 @@
 lua_install
 luacov.stats.out
 
+bin/venv/
+
 # Visual Studio Code
 .vscode/
