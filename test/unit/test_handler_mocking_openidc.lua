@@ -42,7 +42,7 @@ function TestHandler:test_authenticate_ok_with_userinfo()
     headers[h] = v
   end
 
-  self.handler:access({})
+  self.handler:access({userinfo_header_name = 'X-Userinfo'})
   lu.assertTrue(self:log_contains("calling authenticate"))
   lu.assertEquals(ngx.ctx.authenticated_credential.id, "sub")
   lu.assertEquals(headers['X-Userinfo'], "eyJzdWIiOiJzdWIifQ==")
@@ -73,7 +73,7 @@ function TestHandler:test_authenticate_ok_with_accesstoken()
     headers[h] = v
   end
 
-  self.handler:access({})
+  self.handler:access({access_token_header_name = 'X-Access-Token'})
   lu.assertTrue(self:log_contains("calling authenticate"))
   lu.assertEquals(headers['X-Access-Token'], "ACCESS_TOKEN")
 end
@@ -107,7 +107,7 @@ function TestHandler:test_authenticate_ok_with_idtoken()
     headers[h] = v
   end
 
-  self.handler:access({})
+  self.handler:access({id_token_header_name = 'X-ID-Token'})
   lu.assertTrue(self:log_contains("calling authenticate"))
   lu.assertEquals(headers['X-ID-Token'], "eyJzdWIiOiJzdWIifQ==")
 end
@@ -155,7 +155,7 @@ function TestHandler:test_introspect_ok_with_userinfo()
     headers[h] = v
   end
 
-  self.handler:access({introspection_endpoint = "x"})
+  self.handler:access({introspection_endpoint = "x", userinfo_header_name = "X-Userinfo"})
   lu.assertTrue(self:log_contains("introspect succeeded"))
   lu.assertEquals(headers['X-Userinfo'], "eyJzdWIiOiJzdWIifQ==")
 end
@@ -174,8 +174,8 @@ function TestHandler:test_bearer_only_with_good_token()
   ngx.req.set_header = function(h, v)
     headers[h] = v
   end
+  self.handler:access({introspection_endpoint = "x", bearer_only = "yes", realm = "kong", userinfo_header_name = "X-Userinfo"})
 
-  self.handler:access({introspection_endpoint = "x", bearer_only = "yes", realm = "kong"})
   lu.assertTrue(self:log_contains("introspect succeeded"))
   lu.assertEquals(headers['X-Userinfo'], "eyJzdWIiOiJzdWIifQ==")
 end
@@ -186,7 +186,7 @@ function TestHandler:test_bearer_only_with_bad_token()
   end
   ngx.req.get_headers = function() return {Authorization = "Bearer xxx"} end
 
-  self.handler:access({introspection_endpoint = "x", bearer_only = "yes", realm = "kong"})
+  self.handler:access({introspection_endpoint = "x", bearer_only = "yes", realm = "kong", userinfo_header_name = 'X-Userinfo'})
 
   lu.assertEquals(ngx.header["WWW-Authenticate"], 'Bearer realm="kong",error="validation failed"')
   lu.assertEquals(ngx.status, ngx.HTTP_UNAUTHORIZED)
