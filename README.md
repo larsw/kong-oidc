@@ -82,6 +82,7 @@ You also need to set the `KONG_CUSTOM_PLUGINS` environment variable
 | `config.bearer_only` | no | false | Only introspect tokens without redirecting |
 | `config.realm` | kong | false | Realm used in WWW-Authenticate response header |
 | `config.logout_path` | /logout | false | Absolute path used to logout from the OIDC RP |
+| `config.unauth_action` | auth | false | What action to take when unauthenticated - `auth` to redirect to the login page and attempt (re)authenticatation, `pass` to pass through unauthenticated, `error` to use the error recovery page (if set) or just raise a 500 error, `401` or `410` to raise these respective error messages directly |
 
 ### Enabling
 
