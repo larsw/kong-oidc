@@ -58,10 +58,14 @@ If you're using `luarocks` execute the following:
 
      luarocks install kong-oidc
 
-You also need to set the `KONG_CUSTOM_PLUGINS` environment variable
+[Kong < 0.14] You also need to set the `KONG_CUSTOM_PLUGINS` environment variable
 
-    export KONG_CUSTOM_PLUGINS=oidc
+     export KONG_CUSTOM_PLUGINS=oidc
 
+[Kong >= 0.14] Since `KONG_CUSTOM_PLUGINS` has been removed, you also need to set the `KONG_PLUGINS` environment variable to include besides the bundled ones, oidc
+
+     export KONG_PLUGINS=bundled,oidc
+     
 ## Usage
 
 ### Parameters
@@ -77,7 +81,7 @@ You also need to set the `KONG_CUSTOM_PLUGINS` environment variable
 | `config.session_secret` | | false | Additional parameter, which is used to encrypt the session cookie. Needs to be random |
 | `config.introspection_endpoint` | | false | Token introspection endpoint |
 | `config.timeout` | | false | OIDC endpoint calls timeout |
-| `config.introspection_endpoint_auth_method` | client_secret_basic | false | Token introspection authentication method. `resty-openidc` supports `client_secret_(basic|post)` |
+| `config.introspection_endpoint_auth_method` | client_secret_basic | false | Token introspection authentication method. resty-openidc supports `client_secret_(basic\|post)` |
 | `config.bearer_only` | no | false | Only introspect tokens without redirecting |
 | `config.realm` | kong | false | Realm used in WWW-Authenticate response header |
 | `config.logout_path` | /logout | false | Absolute path used to logout from the OIDC RP |
