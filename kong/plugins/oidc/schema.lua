@@ -9,6 +9,7 @@ return {
     introspection_endpoint_auth_method = { type = "string", required = false },
     bearer_only = { type = "string", required = true, default = "no" },
     realm = { type = "string", required = true, default = "kong" },
+    redirect_uri = { type = "string" },
     redirect_uri_path = { type = "string" },
     scope = { type = "string", required = true, default = "openid" },
     response_type = { type = "string", required = true, default = "code" },

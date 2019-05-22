@@ -9,3 +9,7 @@ bin/venv/
 
 # Visual Studio Code
 .vscode/
+
+# IntelliJ IDEA
+*.iml
+.idea
