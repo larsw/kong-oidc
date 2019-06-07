@@ -1,9 +1,9 @@
-package = "kong-oidc"
-version = "1.1.0-0"
+package = "kong-enhanced-oidc"
+version = "1.0.0"
 source = {
-    url = "git://github.com/larsw/kong-oidc",
-    tag = "v1.1.0",
-    dir = "kong-oidc"
+    url = "git://github.com/larsw/kong-enhanced-oidc",
+    tag = "v1.0.0",
+    dir = "kong-enhanced-oidc"
 }
 description = {
     summary = "A Kong plugin for implementing the OpenID Connect Relying Party (RP) functionality",
@@ -18,11 +18,11 @@ description = {
 
         It can be used as a reverse proxy terminating OAuth/OpenID Connect in front of an origin server so that the origin server/services can be protected with the relevant standards without implementing those on the server itself.
     ]],
-    homepage = "https://github.com/nokia/kong-oidc",
+    homepage = "https://github.com/larsw/kong-enhanced-oidc",
     license = "Apache 2.0"
 }
 dependencies = {
-    "lua-resty-openidc ~> 1.7.1-1""
+    "lua-resty-openidc ~> 1.6.0"
 }
 build = {
     type = "builtin",

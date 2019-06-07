@@ -44,7 +44,7 @@ function M.get_redirect_uri_path(ngx)
 end
 
 function M.get_options(config, ngx)
-  local options = {
+  return {
     client_id = config.client_id,
     client_secret = config.client_secret,
     discovery = config.discovery,
@@ -71,12 +71,6 @@ function M.get_options(config, ngx)
     disable_id_token_header = config.disable_id_token_header == "yes",
     disable_access_token_header = config.disable_access_token_header == "yes"
   }
-
-  if not config.redirect_uri then
-    options["redirect_uri_path"] = config.redirect_uri_path or M.get_redirect_uri_path(ngx)
-  end
-
-  return options
 end
 
 function M.exit(httpStatusCode, message, ngxCode)
