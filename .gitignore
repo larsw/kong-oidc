@@ -4,3 +4,6 @@
 .\#*
 lua_install
 luacov.stats.out
+
+# Visual Studio Code
+.vscode/

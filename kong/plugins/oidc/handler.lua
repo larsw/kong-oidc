@@ -37,14 +37,17 @@ function handle(oidcConfig)
   if response == nil then
     response = make_oidc(oidcConfig)
     if response then
-      if (response.user) then
-        utils.injectUser(response.user)
+      if (not oidcConfig.disable_userinfo_header
+          and response.user) then
+        utils.injectUser(response.user, oidcConfig.userinfo_header_name)
       end
-      if (response.access_token) then
-        utils.injectAccessToken(response.access_token)
+      if (not oidcConfig.disable_access_token_header
+          and response.access_token) then
+        utils.injectAccessToken(response.access_token, oidcConfig.access_token_header_name, oidcConfig.access_token_as_bearer)
       end
-      if (response.id_token) then
-        utils.injectIDToken(response.id_token)
+      if (not oidcConfig.disable_id_token_header
+          and response.id_token) then
+        utils.injectIDToken(response.id_token, oidcConfig.id_token_header_name)
       end
     end
   end
