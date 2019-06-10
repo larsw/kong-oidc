@@ -16,4 +16,4 @@ luarocks install luaunit
 luarocks install luacov
 
 ls -lR
-curl -s -L -O https://github.com/bungle/lua-resty-random/archive/master.zip && unzip master.zip && rm -rf master.zip && mv lua-resty-random-master/lib/resty/* lua_install/lua/5.1/resty/
+curl -s -L -O https://github.com/bungle/lua-resty-random/archive/master.zip && unzip master.zip && rm -rf master.zip && mv lua-resty-random-master/lib/resty/* lua_install/share/lua/5.1/resty/
