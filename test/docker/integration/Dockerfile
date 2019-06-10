@@ -12,8 +12,6 @@ RUN luarocks install luaunit
 RUN luarocks install lua-cjson
 
 # Change openidc version when version in rockspec changes
-RUN luarocks install lua-resty-openidc 1.7.1-1
-
-RUN curl -s -O -L https://github.com/bungle/lua-resty-random/archive/master.zip && unzip master.zip && rm -rf master.zip && mv /lua-resty-random-master/lib/resty/* /usr/local/share/lua/5.1/resty/
+RUN luarocks install lua-resty-openidc 1.6.0
 
 COPY . /usr/local/kong-oidc
