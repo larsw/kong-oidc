@@ -6,7 +6,7 @@ export KONG_VERSION=${KONG_VERSION:-0.13.1-0}
 export LUA_RESTY_OPENIDC_VERSION=${LUA_RESTY_OPENIDC_VERSION:-1.7.1-1}
 
 pip install hererocks
-hererocks lua_install -r^ --luajit=2.0.5 --lua=${LUA_VERSION}
+hererocks lua_install -r^ --luajit=2.0.5 #--lua=${LUA_VERSION}
 export PATH=${PATH}:${PWD}/lua_install/bin
 
 luarocks install kong ${KONG_VERSION}
