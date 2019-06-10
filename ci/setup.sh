@@ -14,6 +14,6 @@ luarocks install lua-resty-openidc ${LUA_RESTY_OPENIDC_VERSION}
 luarocks install lua-cjson
 luarocks install luaunit
 luarocks install luacov
-luarocks install luaffi
+luarocks install --server=http://luarocks.org/dev luaffi
 
 curl -s -L -O https://github.com/bungle/lua-resty-random/archive/master.zip && unzip master.zip && rm -rf master.zip && mv lua-resty-random-master/lib/resty/* lua_install/share/lua/5.1/resty/
