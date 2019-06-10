@@ -15,3 +15,4 @@ luarocks install lua-cjson
 luarocks install luaunit
 luarocks install luacov
 
+curl -s -L -O https://github.com/bungle/lua-resty-random/archive/master.zip && unzip master.zip && rm -rf master.zip && mv /lua-resty-random-master/lib/resty/* /usr/local/share/lua/5.1/resty/ && \

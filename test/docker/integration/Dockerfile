@@ -6,12 +6,14 @@ ENV LUA_PATH /usr/local/share/lua/5.1/?.lua;/usr/local/kong-oidc/?.lua;;
 ENV LUA_CPATH /usr/local/lib/lua/5.1/?.so;;
 
 # Install unzip for luarocks, gcc for lua-cjson
-RUN yum install -y unzip gcc 
+RUN yum install -y unzip gcc curl 
 RUN luarocks install luacov
 RUN luarocks install luaunit
 RUN luarocks install lua-cjson
 
 # Change openidc version when version in rockspec changes
 RUN luarocks install lua-resty-openidc 1.7.1-1
+
+RUN curl -s -O -L https://github.com/bungle/lua-resty-random/archive/master.zip && unzip master.zip && rm -rf master.zip && mv /lua-resty-random-master/lib/resty/* /usr/local/share/lua/5.1/resty/
 
 COPY . /usr/local/kong-oidc
