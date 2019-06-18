@@ -81,9 +81,7 @@ You also need to set the `KONG_CUSTOM_PLUGINS` environment variable
 | `config.bearer_only` | no | false | Only introspect tokens without redirecting |
 | `config.realm` | kong | false | Realm used in WWW-Authenticate response header |
 | `config.logout_path` | /logout | false | Absolute path used to logout from the OIDC RP |
-<<<<<<< HEAD
 | `config.unauth_action` | auth | false | What action to take when unauthenticated - `auth` to redirect to the login page and attempt (re)authenticatation, `pass` to pass through unauthenticated, `error` to use the error recovery page (if set) or just raise a 500 error, `401` or `410` to raise these respective error messages directly |
-=======
 | `config.ignore_auth_filters` || false | A comma-separated list of endpoints to bypass authentication for |
 | `config.userinfo_header_name` | `X-Userinfo` | false | The name of the HTTP header to use when passing the UserInfo to the upstream server |
 | `config.id_token_header_name` | `X-ID-Token` | false | The name of the HTTP header to use when passing the ID Token to the upstream server |
@@ -92,7 +90,6 @@ You also need to set the `KONG_CUSTOM_PLUGINS` environment variable
 | `config.disable_userinfo_header` | no | false | Disable passing the Userinfo to the upstream server |
 | `config.disable_id_token_header` | no | false | Disable passing the ID Token to the upstream server |
 | `config.disable_access_token_header` | no | false | Disable passing the Access Token to the upstream server |
->>>>>>> Adds misc. options to tune which tokens to send to upstream service. Adds the possibility to send the access token as an Authorization Bearer token. Improves the documentation (README)
 
 ### Enabling kong-oidc
 
