@@ -89,7 +89,7 @@ If you're using `luarocks` execute the following:
 | `config.userinfo_header_name` | `X-Userinfo` | false | The name of the HTTP header to use when passing the UserInfo to the upstream server |
 | `config.id_token_header_name` | `X-ID-Token` | false | The name of the HTTP header to use when passing the ID Token to the upstream server |
 | `config.access_token_header_name` | `X-Access-Token` | false | The name of the HTTP header to use when passing the Access Token to the upstream server|
-| `config.acccess_token_as_bearer` | no | false | Whether or not the access token should be passed as a Bearer token|
+| `config.access_token_header_as_bearer` | no | false | Whether or not the access token should be passed as a Bearer token|
 | `config.disable_userinfo_header` | no | false | Disable passing the Userinfo to the upstream server |
 | `config.disable_id_token_header` | no | false | Disable passing the ID Token to the upstream server |
 | `config.disable_access_token_header` | no | false | Disable passing the Access Token to the upstream server |
@@ -210,7 +210,7 @@ To pass the access token to the upstream server as a normal Bearer token, config
 | Key | Value |
 | --- | --- |
 | `config.access_token_header_name` | `Authorization` |
-| `config.access_token_as_bearer` | `yes` |
+| `config.access_token_header_as_bearer` | `yes` |
 
 ## Development
 
