@@ -16,7 +16,7 @@ local function formatAsBearerToken(token)
   return "Bearer " .. token
 end
 
-function M.get_redirect_uri(ngx)
+function M.get_redirect_uri_path(ngx)
   local function drop_query()
     local uri = ngx.var.request_uri
     local x = uri:find("?")
@@ -53,7 +53,7 @@ function M.get_options(config, ngx)
     introspection_endpoint_auth_method = config.introspection_endpoint_auth_method,
     bearer_only = config.bearer_only,
     realm = config.realm,
-    redirect_uri = config.redirect_uri or M.get_redirect_uri(ngx),
+    redirect_uri_path = config.redirect_uri_path or M.get_redirect_uri_path(ngx),
     scope = config.scope,
     response_type = config.response_type,
     ssl_verify = config.ssl_verify,
@@ -62,6 +62,7 @@ function M.get_options(config, ngx)
     filters = parseFilters((config.filters or "") .. "," .. (config.ignore_auth_filters or "")),
     logout_path = config.logout_path,
     redirect_after_logout_uri = config.redirect_after_logout_uri,
+    unauth_action = config.unauth_action,
     userinfo_header_name = config.userinfo_header_name,
     id_token_header_name = config.id_token_header_name,
     access_token_header_name = config.access_token_header_name,
