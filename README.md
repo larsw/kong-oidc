@@ -81,16 +81,17 @@ If you're using `luarocks` execute the following:
 | `config.session_secret` | | false | Additional parameter, which is used to encrypt the session cookie. Needs to be random |
 | `config.introspection_endpoint` | | false | Token introspection endpoint |
 | `config.timeout` | | false | OIDC endpoint calls timeout |
-| `config.introspection_endpoint_auth_method` | client_secret_basic | false | Token introspection authentication method. resty-openidc supports `client_secret_(basic\|post)` |
+| `config.introspection_endpoint_auth_method` | client_secret_basic | false | Token introspection authentication method. `resty-openidc` supports `client_secret_(basic\|post)` |
 | `config.bearer_only` | no | false | Only introspect tokens without redirecting |
 | `config.realm` | kong | false | Realm used in WWW-Authenticate response header |
 | `config.logout_path` | /logout | false | Absolute path used to logout from the OIDC RP |
+| `config.unauth_action` | auth | false | What action to take when unauthenticated - `auth` to redirect to the login page and attempt (re)authenticatation, `pass` to pass through unauthenticated, `error` to use the error recovery page (if set) or just raise a 500 error, `401` or `410` to raise these respective error messages directly |
 | `config.ignore_auth_filters` || false | A comma-separated list of endpoints to bypass authentication for |
 | `config.redirect_uri` || false | A relative or absolute URI the OP will redirect to after successful authentication |
 | `config.userinfo_header_name` | `X-Userinfo` | false | The name of the HTTP header to use when passing the UserInfo to the upstream server |
 | `config.id_token_header_name` | `X-ID-Token` | false | The name of the HTTP header to use when passing the ID Token to the upstream server |
 | `config.access_token_header_name` | `X-Access-Token` | false | The name of the HTTP header to use when passing the Access Token to the upstream server|
-| `config.acccess_token_as_bearer` | no | false | Whether or not the access token should be passed as a Bearer token|
+| `config.access_token_header_as_bearer` | no | false | Whether or not the access token should be passed as a Bearer token|
 | `config.disable_userinfo_header` | no | false | Disable passing the Userinfo to the upstream server |
 | `config.disable_id_token_header` | no | false | Disable passing the ID Token to the upstream server |
 | `config.disable_access_token_header` | no | false | Disable passing the Access Token to the upstream server |
@@ -211,7 +212,7 @@ To pass the access token to the upstream server as a normal Bearer token, config
 | Key | Value |
 | --- | --- |
 | `config.access_token_header_name` | `Authorization` |
-| `config.access_token_as_bearer` | `yes` |
+| `config.access_token_header_as_bearer` | `yes` |
 
 ## Development
 
