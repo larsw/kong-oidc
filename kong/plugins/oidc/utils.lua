@@ -81,7 +81,7 @@ end
 
 function M.injectAccessToken(accessToken, headerName, bearerToken)
   ngx.log(ngx.DEBUG, "Injecting " .. headerName)
-  token = accessToken
+  local token = accessToken
   if (bearerToken) then
     token = formatAsBearerToken(token)
   end
