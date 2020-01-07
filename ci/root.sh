@@ -2,5 +2,5 @@
 set -e
 
 apt-get update
-apt-get install -y curl unzip libssl-dev python python-pip git
+apt-get install -y curl unzip libssl-dev python python-pip git libreadline-dev libncurses-dev
 
