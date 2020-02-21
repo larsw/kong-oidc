@@ -121,6 +121,18 @@ function TestHandler:test_authenticate_nok_no_recovery()
   lu.assertTrue(self:log_contains("calling authenticate"))
 end
 
+function TestHandler:test_authenticate_nok_deny()
+  self.module_resty.openidc.authenticate = function(opts)
+    if opts.unauth_action == "deny" then
+		return {}, "unauthorized request"
+	end
+	return {}, true
+  end
+
+  self.handler:access({unauth_action = "deny"})
+  lu.assertEquals(ngx.status, ngx.HTTP_UNAUTHORIZED)
+end
+
 function TestHandler:test_authenticate_nok_with_recovery()
   self.module_resty.openidc.authenticate = function(opts)
     return {}, true
