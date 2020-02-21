@@ -85,7 +85,7 @@ If you're using `luarocks` execute the following:
 | `config.bearer_only` | no | false | Only introspect tokens without redirecting |
 | `config.realm` | kong | false | Realm used in WWW-Authenticate response header |
 | `config.logout_path` | /logout | false | Absolute path used to logout from the OIDC RP |
-| `config.unauth_action` | auth | false | What action to take when unauthenticated - `auth` to redirect to the login page and attempt (re)authenticatation, `pass` to pass through unauthenticated, `error` to use the error recovery page (if set) or just raise a 500 error, `401` or `410` to raise these respective error messages directly |
+| `config.unauth_action` | auth | false | What action to take when unauthenticated <br> - `auth` to redirect to the login page and attempt (re)authenticatation,<br> - `deny` to stop with 401,<br> TODO: `pass` to pass through unauthenticated, `error` to use the error recovery page (if set) or just raise a 500 error, `401` or `410` to raise these respective error messages directly |
 | `config.ignore_auth_filters` || false | A comma-separated list of endpoints to bypass authentication for |
 | `config.redirect_uri` || false | A relative or absolute URI the OP will redirect to after successful authentication |
 | `config.userinfo_header_name` | `X-Userinfo` | false | The name of the HTTP header to use when passing the UserInfo to the upstream server |
